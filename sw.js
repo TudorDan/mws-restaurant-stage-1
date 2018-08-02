@@ -4,6 +4,7 @@ self.addEventListener('install', function(event) {
       return cache.addAll([
         './',
         './restaurant.html',
+        './restaurant_missing.html',
         './index.html',
         './css/styles.css',
         './data/restaurants.json',
@@ -35,9 +36,7 @@ self.addEventListener('fetch', function(event) {
         });  
       });
     }).catch(function(error) {
-      return new Response('<em>Data retrieval failed - retry when online or return <a href="/">Home</a></em>', {
-        headers: {'Content-Type': 'text/html'}
-      });
+      return fetch('./restaurant_missing.html');
     })
   );
 });
