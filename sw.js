@@ -1,3 +1,4 @@
+//fill initial info in the cache
 self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('rest-rev-app-v1').then(function(cache) {
@@ -26,16 +27,22 @@ self.addEventListener('install', function(event) {
   );
 });
 
+//intercept fetch event
 self.addEventListener('fetch', function(event) {
   event.respondWith(
+    //if the request is cached, serve it 
     caches.match(event.request).then(function(resp) {
-      return resp || fetch(event.request).then(function(response) {
+      return resp || 
+
+      //if the request is not cached then fetch and cache it
+      fetch(event.request).then(function(response) {
         return caches.open('rest-rev-app-v1').then(function(cache) {
           cache.put(event.request, response.clone());
           return response;
         });  
       });
     }).catch(function(error) {
+      //if fetch fails return custom page with error message
       return fetch('./restaurant_missing.html');
     })
   );

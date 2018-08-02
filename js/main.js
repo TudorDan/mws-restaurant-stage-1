@@ -5,7 +5,7 @@ var newMap
 var markers = []
 
 /**
- * Fetch neighborhoods and cuisines as soon as the page is loaded.
+ * Fetch neighborhoods and cuisines as soon as the page is loaded and register the cache worker
  */
 document.addEventListener('DOMContentLoaded', (event) => {
   initMap(); // added 
@@ -192,8 +192,10 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 * Register the caching service worker 
 */
 registerServiceWorker = function() {
+  //exit if browser is not compatible
   if (!navigator.serviceWorker) return;
 
+  //register if browser is ok
   navigator.serviceWorker.register('/sw.js').then(function() {
     console.log('Registration worked!');
   }).catch(function() {
