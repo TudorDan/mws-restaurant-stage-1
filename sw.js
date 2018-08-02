@@ -34,6 +34,10 @@ self.addEventListener('fetch', function(event) {
           return response;
         });  
       });
+    }).catch(function(error) {
+      return new Response('<em>Data retrieval failed - retry when online or return <a href="/">Home</a></em>', {
+        headers: {'Content-Type': 'text/html'}
+      });
     })
   );
 });
