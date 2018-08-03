@@ -196,7 +196,7 @@ registerServiceWorker = function() {
   if (!navigator.serviceWorker) return;
 
   //register if browser is ok
-  navigator.serviceWorker.register('/sw.js').then(function() {
+  navigator.serviceWorker.register('/mws-restaurant-stage-1/sw.js').then(function() {
     console.log('Registration worked!');
   }).catch(function() {
     console.log('Registration failed!');
