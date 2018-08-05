@@ -181,7 +181,7 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const noResult = document.createElement('p');
-  noResult.innerHTML = 'No restaurant mathes search criteria.';
+  noResult.innerHTML = 'No restaurant matches search criteria.';
   li.append(noResult);
 
   return li
