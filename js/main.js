@@ -138,6 +138,7 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
+  if(restaurants.length === 0) { ul.append(createEmptyRestaurantHTML()); }
   addMarkersToMap();
 }
 
@@ -169,6 +170,19 @@ createRestaurantHTML = (restaurant) => {
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
+
+  return li
+}
+
+/**
+ * Create "empty" restaurant HTML - used when no restaurants match search criteria
+ */
+ createEmptyRestaurantHTML = () => {
+  const li = document.createElement('li');
+
+  const noResult = document.createElement('p');
+  noResult.innerHTML = 'No restaurant mathes search criteria.';
+  li.append(noResult);
 
   return li
 }
