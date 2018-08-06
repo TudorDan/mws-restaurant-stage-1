@@ -8,7 +8,7 @@ var markers = []
  * Fetch neighborhoods and cuisines as soon as the page is loaded and register the cache worker
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-  initMap(); // added 
+  initMap(); // added
   fetchNeighborhoods();
   fetchCuisines();
   registerServiceWorker();
@@ -202,10 +202,10 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 
-} 
+}
 
 /**
-* Register the caching service worker 
+* Register the caching service worker
 */
 registerServiceWorker = function() {
   //exit if browser is not compatible
